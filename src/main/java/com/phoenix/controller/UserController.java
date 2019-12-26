@@ -1,6 +1,8 @@
 package com.phoenix.controller;
 
 import com.phoenix.service.IUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UserController {
+
+    private final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     IUserService userService;
 
     @RequestMapping("/hello")
     public Object sayHello(){
+
+        logger.info("这是一个hello info级别日志!");
+        logger.debug("这是一个hello debug级别日志!");
         return "hello";
     }
 
